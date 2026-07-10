@@ -9,7 +9,13 @@ dotenv.config()
 import mongoose from "mongoose"
 import User from "./models/user.models.js"
 
-await mongoose.connect(process.env.MONGODB_URL)
+try {
+  await mongoose.connect(process.env.MONGODB_URL);
+  console.log("Database connected successfully");
+} catch (error) {
+  console.error("Database connection error:", error);
+  process.exit(1);
+}
 const app=express()
 app.use(express.json())
 const server=http.createServer(app)
