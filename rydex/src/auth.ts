@@ -44,7 +44,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     })
   ],
   callbacks:{
-    // token ke ander user ka data dalta hai
+    // checks user sign-in status
     async signIn({user,account}) {
       console.log(user)
       if(account?.provider=="google"){
