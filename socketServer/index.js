@@ -5,12 +5,13 @@ import { Server } from "socket.io"
 import axios from "axios"
 
 dotenv.config()
-
+import cors from "cors"
 import mongoose from "mongoose"
 import User from "./models/user.models.js"
 
 await mongoose.connect(process.env.MONGODB_URL)
 const app=express()
+app.use(cors())
 app.use(express.json())
 const server=http.createServer(app)
 const port=process.env.PORT || 5000
