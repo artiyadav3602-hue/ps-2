@@ -22,7 +22,8 @@ const io=new Server(server,{
 })
 
 
-
+app.get("/health", (req, res)=> {res.status(200).json({ status:"UP", message: "Server is healthy" });
+                                });
 app.post("/emit", async (req, res) => {
   const { userId, event, data } = req.body;
 
