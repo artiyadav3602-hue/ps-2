@@ -3,7 +3,7 @@ import http from "http"
 import dotenv from "dotenv"
 import { Server } from "socket.io"
 import axios from "axios"
-
+import morgan from "morgan"
 dotenv.config()
 
 import mongoose from "mongoose"
@@ -12,6 +12,10 @@ import User from "./models/user.models.js"
 await mongoose.connect(process.env.MONGODB_URL)
 const app=express()
 app.use(express.json())
+const app = express()
+app.use(cors())
+app.use(express.json())
+app.use(morgan("dev"))
 const server=http.createServer(app)
 const port=process.env.PORT || 5000
 
